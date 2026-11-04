@@ -98,6 +98,22 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
 .mapside .fine{color:var(--muted);font-weight:600;font-size:.9rem}
 .mapside .btn{justify-self:start}
 @media (max-width:700px){.map{grid-template-columns:1fr}}
+#leid2{background:var(--green);color:var(--white)}
+#leid2 .route .stop,#leid2 .route .note,#leid2 .route .time{color:var(--pale)}
+#leid2 .route li::before{background:var(--gold)}
+#leid2 .route li::after{background:#2b6a5c}
+#leid2 .map{background:var(--white);color:var(--ink)}
+#leid2 h2{color:var(--gold)}
+#leid2 .sub{color:var(--pale)}
+.tease{display:grid;gap:12px;justify-items:center}
+.tease-count{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.cd{display:grid;justify-items:center;min-width:84px;background:rgba(255,255,255,.06);border:1px solid rgba(224,166,58,.35);border-radius:14px;padding:14px 12px}
+.cd .n{font-size:clamp(1.8rem,6vw,3rem);font-weight:900;color:var(--gold);font-variant-numeric:tabular-nums;line-height:1}
+.cd .u{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pale);margin-top:6px}
+.tease-note{color:var(--pale);font-weight:700;min-height:1.4em;text-align:center}
+#leid2[data-stage="1"] .stage2,#leid2[data-stage="1"] .stage3,#leid2[data-stage="1"] .stage4{display:none}
+#leid2[data-stage="2"] .stage3,#leid2[data-stage="2"] .stage4{display:none}
+#leid2[data-stage="3"] .stage4{display:none}
 </style>
 
 </head>
@@ -228,6 +244,52 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
 </section>
 </main>
 
+
+<section id="leid2" data-stage="1">
+  <div class="wrap" style="padding-block:40px 64px">
+    <div class="tease">
+      <div class="tease-count" aria-label="Niðurtalning">
+        <div class="cd"><span class="n" id="cdD">—</span><span class="u">dagar</span></div>
+        <div class="cd"><span class="n" id="cdH">—</span><span class="u">klst</span></div>
+        <div class="cd"><span class="n" id="cdM">—</span><span class="u">mín</span></div>
+        <div class="cd"><span class="n" id="cdS">—</span><span class="u">sek</span></div>
+      </div>
+      <p class="tease-note" id="teaseNote"></p>
+    </div>
+    <ol class="route stage2" style="margin-top:36px">
+      <li><div><div class="stop" style="color:var(--muted)">Leið nr. 2</div><div class="note">Tilkynnt síðar.</div></div><span class="time" style="color:var(--muted)">2027</span></li>
+    </ol>
+    <div class="map stage3">
+      <div class="mapfig">
+        <svg viewBox="0 0 616 300" role="img" aria-label="Leið nr. 2, að mestu hulin" style="width:100%;height:auto;max-width:560px;display:block;font-family:inherit">
+          <rect x="0" y="0" width="616" height="300" rx="16" fill="#eef3ef"></rect>
+          <path d="M 70 230 Q 160 200 230 150" fill="none" stroke="#c3d8d0" stroke-width="12" stroke-linecap="round"></path>
+          <path d="M 70 230 Q 160 200 230 150" fill="none" stroke="#1b3a36" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round"></path>
+          <path d="M 230 150 Q 420 20 640 60" fill="none" stroke="#1b3a36" stroke-width="4" stroke-dasharray="4 14" stroke-linecap="round" opacity=".5"></path>
+          <circle cx="70" cy="230" r="11" fill="#2b6a5c" stroke="#f8f4ea" stroke-width="4"></circle>
+          <text x="92" y="226" font-size="19" font-weight="800" fill="#1b3a36">Hvolsvöllur</text>
+          <circle cx="230" cy="150" r="11" fill="#2b6a5c" stroke="#f8f4ea" stroke-width="4"></circle>
+          <text x="252" y="146" font-size="19" font-weight="800" fill="#1b3a36">Keflavík</text>
+          <rect x="400" y="20" width="216" height="120" rx="12" fill="#1b3a36"></rect>
+          <text x="508" y="76" text-anchor="middle" font-size="16" font-weight="800" fill="#e0a63a" letter-spacing="2">ES WIRD SICH ZEIGEN</text>
+          <text x="508" y="104" text-anchor="middle" font-size="12" font-weight="700" fill="#cfe3dc" letter-spacing="1.5">ÁFANGASTAÐUR</text>
+          <text x="596" y="282" text-anchor="end" font-size="13" font-weight="800" fill="#5f746f" letter-spacing="1.5">N ↑ · HLUTI KORTS HULINN</text>
+        </svg>
+      </div>
+      <div class="mapside">
+        <span class="k">Leið nr. 2 · 2027</span>
+        <p class="v">Hvolsvöllur – Keflavík – ? Kerra: óvíst. Söngbók: sama.</p>
+        <span class="fine">Nánar á miðnætti.</span>
+      </div>
+    </div>
+    <div class="stage4" style="margin-top:36px">
+      <h2 style="color:var(--green)">Leið nr. 2 · München 2027</h2>
+      <p class="sub">Stiklan. Hljóð á.</p>
+      <video controls playsinline preload="metadata" poster="stikla2-poster.jpg" src="stikla-leid2.mp4" style="width:100%;max-width:960px;border-radius:16px;background:#000;margin-top:16px;display:block"></video>
+    </div>
+  </div>
+</section>
+
 <footer class="band">
   <div class="wrap">
     <span class="k">Útgefandi</span>
@@ -262,5 +324,14 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
 })();
 </script>
 
+<script>
+(function(){
+  var target=new Date('2027-09-18T14:00:00Z'); // Oktoberfest 2027 opens Sat 18 Sept; time is the bus's
+  var D=document.getElementById('cdD'),H=document.getElementById('cdH'),M=document.getElementById('cdM'),S=document.getElementById('cdS');
+  function pad(n){return (n<10?'0':'')+n}
+  function tick(){ var ms=target-new Date(); if(ms<0) ms=0; var s=Math.floor(ms/1000); D.textContent=Math.floor(s/86400); H.textContent=pad(Math.floor(s%86400/3600)); M.textContent=pad(Math.floor(s%3600/60)); S.textContent=pad(s%60); }
+  tick(); setInterval(tick,1000);
+})();
+</script>
 </body>
 </html>
