@@ -173,7 +173,7 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
       <li><div><div class="stop">Hveragerði</div><div class="note">N1 · Allir fara á klósettið.</div></div><span class="time">15:20</span></li>
       <li><div><div class="stop">Reykjavík</div><div class="note">Olís Norðlingaholti · Pylsa, kókómjólk og einn sem gleymdist.</div></div><span class="time">16:20</span></li>
       <li><div><div class="stop">Húsafell</div><div class="note">Áfangastaður. Heitur pottur, humlar og húðfellingar.</div></div><span class="time">Það skýrist</span></li>
-      <li class="next"><div><div class="stop" id="l2stop">Leið 2</div><div class="note" id="l2note"></div></div><span class="time" id="cd" aria-label="Niðurtalning"><span id="cdD">—</span>d <span id="cdH">—</span>:<span id="cdM">—</span>:<span id="cdS">—</span></span></li>
+      <li class="next"><div><div class="stop" id="l2stop">Leið 2</div><div class="note" id="l2note">Býður upp á bullandi rythma og melody.</div></div><span class="time" id="cd" aria-label="Niðurtalning"><span id="cdD">—</span>d <span id="cdH">—</span>:<span id="cdM">—</span>:<span id="cdS">—</span></span></li>
     </ol>
 
     <div class="map">
@@ -329,9 +329,9 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
   function tick(){ var ms=target-new Date(); if(ms<0) ms=0; var s=Math.floor(ms/1000); D.textContent=Math.floor(s/86400); H.textContent=pad(Math.floor(s%86400/3600)); M.textContent=pad(Math.floor(s%3600/60)); S.textContent=pad(s%60); }
   tick(); setInterval(tick,1000);
   var st=+(document.getElementById('leid2').dataset.stage||1), stop=document.getElementById('l2stop'), note=document.getElementById('l2note');
-  if(st>=2){ note.textContent='Tilkynnt á hálfa tímanum.'; }
-  if(st>=3){ note.textContent='Hvolsvöllur – Keflavík – ? Kerra: óvíst.'; }
-  if(st>=4){ stop.textContent='Leið 2 · München'; note.textContent='Oktoberfest 2027. Stiklan hér fyrir neðan.'; }
+  if(st>=2){ note.textContent='Býður upp á bullandi rythma og melody. Tilkynnt á hálfa tímanum.'; }
+  if(st>=3){ note.textContent='Býður upp á bullandi rythma og melody. Hvolsvöllur – Keflavík – ? Kerra: óvíst.'; }
+  if(st>=4){ stop.textContent='Leið 2 · München'; note.textContent='Býður upp á bullandi rythma og melody. Oktoberfest 2027. Stiklan hér fyrir neðan.'; }
 })();
 </script>
 </body>
