@@ -9,10 +9,11 @@ var FROM_NAME = 'Sigga Einars ferðir';
 var BUS_SEATS = 11;
 
 var STOPS = {
-  'Hvolsvöllur': '14:32',
-  'Selfoss': '15:47',
-  'Hveragerði': '16:01',
-  'Olís Norðlingaholti': '18:25'
+  'Hvolsvöllur': '14:00 (N1)',
+  'Selfoss': '14:50 (Olís)',
+  'Hveragerði': '15:20 (N1)',
+  'Reykjavík': '16:20 (Olís Norðlingaholti)',
+  'Olís Norðlingaholti': '16:20 (Olís Norðlingaholti)'
 };
 
 function doPost(e) {
