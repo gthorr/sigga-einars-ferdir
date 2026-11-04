@@ -329,7 +329,7 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
   function tick(){ var ms=target-new Date(); if(ms<0) ms=0; var s=Math.floor(ms/1000); D.textContent=Math.floor(s/86400); H.textContent=pad(Math.floor(s%86400/3600)); M.textContent=pad(Math.floor(s%3600/60)); S.textContent=pad(s%60); }
   tick(); setInterval(tick,1000);
   var st=+(document.getElementById('leid2').dataset.stage||1), stop=document.getElementById('l2stop'), note=document.getElementById('l2note');
-  if(st>=2){ note.textContent='Tilkynnt síðar.'; }
+  if(st>=2){ note.textContent='Tilkynnt á hálfa tímanum.'; }
   if(st>=3){ note.textContent='Hvolsvöllur – Keflavík – ? Kerra: óvíst.'; }
   if(st>=4){ stop.textContent='Leið 2 · München'; note.textContent='Oktoberfest 2027. Stiklan hér fyrir neðan.'; }
 })();
