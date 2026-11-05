@@ -71,6 +71,7 @@ h2{font-size:1.1rem;font-weight:900;letter-spacing:.06em;text-transform:uppercas
 .result{background:var(--green);color:var(--white);border-radius:14px;padding:18px 20px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;text-align:center}
 .result small{display:block;text-transform:none;letter-spacing:0;font-weight:600;color:var(--pale);margin-top:6px}
 .song{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:var(--white);border:2px solid var(--gold);border-radius:16px;padding:22px 24px;margin-top:28px}
+.song.pack{margin-top:16px}.song.pack .box{width:44px;height:44px;border:4px solid var(--green);border-radius:10px;flex:none}.song.pack.other{border-style:dashed;border-color:#b7c4bf;color:var(--muted)}.song.pack.other .box{border-style:dashed;border-color:#b7c4bf}
 .song .n{width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--green);font-weight:900;display:grid;place-items:center;font-size:1.2rem}
 .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:28px}
 .rev{background:var(--white);border:2px solid var(--line);border-radius:16px;padding:20px 22px;display:grid;gap:10px}
@@ -132,6 +133,7 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
         <li><a href="#leid">Leiðin</a></li>
         <li><a href="#boka">Bóka</a></li>
         <li><a href="#songbok">Söngbók</a></li>
+        <li><a href="#farangur">Farangur</a></li>
         <li><a href="#umsagnir">Umsagnir</a></li>
       </ul>
     </nav>
@@ -236,6 +238,38 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;align-items:center">
       <a class="btn" href="https://claude.ai/artifact/Y2u8nobV9CV83DDCem382W" target="_blank" rel="noopener">Opna söngbókina</a>
       <span class="sub" style="margin:0">Forsíða, efnisyfirlit og lagið. Prentast á A4.</span>
+    </div>
+  </div>
+</section>
+
+<section id="farangur">
+  <div class="wrap">
+    <h2>Farangurslisti</h2>
+    <p class="sub">Eyðublað nr. 3. Farþegi skal hafa meðferðis:</p>
+    <div class="song pack">
+      <div style="display:flex;gap:16px;align-items:center;min-width:0">
+        <span class="box" aria-hidden="true"></span>
+        <div><div style="font-size:1.5rem;font-weight:800">Sængurföt</div><div class="note" style="color:var(--muted);font-weight:600">Eins og venjulega.</div></div>
+      </div>
+      <span class="pill">1 af 2</span>
+    </div>
+    <div class="song pack">
+      <div style="display:flex;gap:16px;align-items:center;min-width:0">
+        <span class="box" aria-hidden="true"></span>
+        <div><div style="font-size:1.5rem;font-weight:800">Sundskýla</div><div class="note" style="color:var(--muted);font-weight:600">Eins og venjulega.</div></div>
+      </div>
+      <span class="pill">2 af 2</span>
+    </div>
+    <div class="song pack other">
+      <div style="display:flex;gap:16px;align-items:center;min-width:0">
+        <span class="box" aria-hidden="true"></span>
+        <div><div style="font-size:1.5rem;font-weight:800">Annað</div><div class="note" style="font-weight:600">Segir sig sjálft.</div></div>
+      </div>
+    </div>
+    <p class="sub" style="margin-top:14px">§1 Farangur fer í kerruna. Farþegar fara ekki í kerruna. §2 Söngbókin verður afhent í rútunni. §3 Sá sem gleymir sængurfötum sefur á sundskýlunni. §4 Sá sem gleymir sundskýlu syngur Litla fugl einn. Í lauginni.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;align-items:center">
+      <a class="btn" href="https://claude.ai/artifact/1W2SPEtWnmqiXRb3PcC85c" target="_blank" rel="noopener">Opna farangurslistann</a>
+      <span class="sub" style="margin:0">Prentast á A4. Hakið við. Bæði.</span>
     </div>
   </div>
 </section>
