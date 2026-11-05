@@ -72,6 +72,16 @@ h2{font-size:1.1rem;font-weight:900;letter-spacing:.06em;text-transform:uppercas
 .result small{display:block;text-transform:none;letter-spacing:0;font-weight:600;color:var(--pale);margin-top:6px}
 .song{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:var(--white);border:2px solid var(--gold);border-radius:16px;padding:22px 24px;margin-top:28px}
 .song.pack{margin-top:16px}.song.pack .box{width:44px;height:44px;border:4px solid var(--green);border-radius:10px;flex:none}.song.pack.other{border-style:dashed;border-color:#b7c4bf;color:var(--muted)}.song.pack.other .box{border-style:dashed;border-color:#b7c4bf}
+.counter{background:var(--white);border:2px solid var(--gold);border-radius:18px;padding:24px;margin-top:24px;display:flex;flex-direction:column;gap:16px}
+.counter .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+.counter .field{flex:1 1 240px;min-width:0}
+.counter .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92rem;font-weight:700;color:var(--green);background:#eef3ef;border-radius:10px;padding:14px 16px;min-height:52px;white-space:pre-line}
+.counter .status.err{color:#c8372d}
+.ticket{margin-top:6px;display:flex;flex-direction:column;gap:12px}
+.ticket img{width:100%;height:auto;border-radius:14px;box-shadow:0 14px 34px rgba(27,58,54,.18);transform:translateY(-16px) rotate(-1.5deg);opacity:0;animation:slide .7s cubic-bezier(.2,.9,.3,1.2) forwards}
+@keyframes slide{to{transform:none;opacity:1}}
+.ticket .acts{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.ticket .acts .btn{text-decoration:none}
 .song .n{width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--green);font-weight:900;display:grid;place-items:center;font-size:1.2rem}
 .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:28px}
 .rev{background:var(--white);border:2px solid var(--line);border-radius:16px;padding:20px 22px;display:grid;gap:10px}
@@ -134,6 +144,7 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
         <li><a href="#boka">Bóka</a></li>
         <li><a href="#songbok">Söngbók</a></li>
         <li><a href="#farangur">Farangur</a></li>
+        <li><a href="#midar">Farmiðar</a></li>
         <li><a href="#umsagnir">Umsagnir</a></li>
       </ul>
     </nav>
@@ -274,6 +285,27 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
   </div>
 </section>
 
+<section id="midar" class="band">
+  <div class="wrap">
+    <h2 style="color:var(--gold)">Miðaafgreiðsla</h2>
+    <p class="sub" style="color:var(--pale)">Farmiðar eru tilbúnir. Sláðu inn nafnið þitt og afgreiðslan finnur miðann þinn. Eða ekki.</p>
+    <form class="counter" id="ticketForm" style="color:var(--ink)">
+      <div class="row">
+        <div class="field"><label for="tnafn">Nafn farþega</label><input id="tnafn" type="text" autocomplete="off" required placeholder="Fornafn dugar"></div>
+        <button class="btn" type="submit" id="tBtn">Sækja farmiða</button>
+      </div>
+      <div class="status" id="tStatus">Afgreiðslan er opin. Röðin er engin.</div>
+      <div class="ticket" id="tOut" hidden>
+        <img id="tImg" alt="Farmiði">
+        <div class="acts">
+          <a class="btn" id="tDl" download>Vista miðann</a>
+          <span class="sub" style="margin:0;color:var(--muted)">Vistaðu hann í símann. Sýndu fararstjóra. Hann svarar engu.</span>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
 <section id="umsagnir">
   <div class="wrap">
     <h2>Umsagnir farþega</h2>
@@ -366,6 +398,56 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
   if(st>=2){ note.textContent='Býður upp á bullandi rythma og melody. Tilkynnt á hálfa tímanum.'; }
   if(st>=3){ note.textContent='Býður upp á bullandi rythma og melody. Hvolsvöllur – Keflavík – ? Kerra: óvíst.'; }
   if(st>=4){ stop.textContent='Leið 2 · München'; note.textContent='Býður upp á bullandi rythma og melody. Oktoberfest 2027. Stiklan hér fyrir neðan.'; }
+})();
+</script>
+
+<script>
+(function(){
+  var T=[
+    ['SEF-001',['sigurdur','siggi','sigga','siggi einars','sigurdur einar']],
+    ['SEF-002',['arni thor','arni th','addi']],
+    ['SEF-003',['aevar','aevar orn','ævar']],
+    ['SEF-004',['sveinn','sveinn kristjan','svenni','judas']],
+    ['SEF-005',['gunnar','gunnar bjarki','gunni']],
+    ['SEF-006',['ivar']],
+    ['SEF-007',['oskar']],
+    ['SEF-008',['elvar']],
+    ['SEF-009',['heidar']],
+    ['SEF-010',['arni rafn','arni r']],
+    ['SEF-011',['gissur','gissur thor']]
+  ];
+  var SEAT={'SEF-001':'Hveragerði','SEF-002':'Selfossi','SEF-003':'Reykjavík','SEF-004':'hvergi','SEF-005':'Selfossi','SEF-006':'Hvolsvelli','SEF-007':'Reykjavík','SEF-008':'Hvolsvelli','SEF-009':'Hvolsvelli','SEF-010':'Reykjavík','SEF-011':'Reykjavík'};
+  function norm(s){return s.toLowerCase().replace(/þ/g,'th').replace(/ð/g,'d').replace(/æ/g,'ae').replace(/ö/g,'o').replace(/[áà]/g,'a').replace(/[éè]/g,'e').replace(/í/g,'i').replace(/ó/g,'o').replace(/ú/g,'u').replace(/ý/g,'y').replace(/[^a-z ]/g,'').replace(/\s+/g,' ').trim();}
+  function find(n){
+    n=norm(n); if(!n) return null;
+    if(n==='arni') return 'ARNI';
+    for(var i=0;i<T.length;i++){var a=T[i][1];for(var j=0;j<a.length;j++){var k=norm(a[j]);if(n===k||n.indexOf(k+' ')===0||k.indexOf(n+' ')===0) return T[i][0];}}
+    for(var i=0;i<T.length;i++){var a=T[i][1];for(var j=0;j<a.length;j++){if(norm(a[j]).split(' ')[0]===n.split(' ')[0]) return T[i][0];}}
+    return null;
+  }
+  var f=document.getElementById('ticketForm'),st=document.getElementById('tStatus'),out=document.getElementById('tOut'),img=document.getElementById('tImg'),dl=document.getElementById('tDl'),btn=document.getElementById('tBtn'),inp=document.getElementById('tnafn');
+  var busy=false;
+  function lines(arr,done){var i=0;st.textContent='';(function next(){if(i>=arr.length){done();return;}st.textContent+=(i?'\n':'')+arr[i++];setTimeout(next,650+Math.random()*500);})();}
+  f.addEventListener('submit',function(e){
+    e.preventDefault(); if(busy) return;
+    var name=inp.value.trim(), id=find(name);
+    busy=true; btn.disabled=true; out.hidden=true; st.classList.remove('err');
+    var steps=['> Leita að „'+name+'“ í farþegaskrá…','> Fletti upp í kerrunni…','> Spyr Sigga Einars…','> Siggi svarar engu.','> Það skýrist…'];
+    if(id==='ARNI'){steps.push('> Tveir Árnar. Þór eða Rafn? Reynið aftur.');}
+    lines(steps,function(){
+      busy=false; btn.disabled=false;
+      if(id==='ARNI'){st.classList.add('err');return;}
+      if(!id){
+        var m=norm(name);
+        st.textContent+= (m.indexOf('maggi')===0||m.indexOf('mix')>=0) ? '\n> Maggi mix: Kerran. Alltaf kerran.' : '\n> Enginn miði fannst. Hefurðu bókað? Nei? Kerran.';
+        st.classList.add('err'); return;
+      }
+      st.textContent+='\n> Miði '+id+' fundinn. Brottför frá '+SEAT[id]+'. Koma: það skýrist.';
+      img.src='midar/'+id+'.png'; img.alt='Farmiði '+id; dl.href='midar/'+id+'.png'; dl.download='farmidi-'+id+'.png';
+      img.style.animation='none'; void img.offsetWidth; img.style.animation='';
+      out.hidden=false;
+    });
+  });
 })();
 </script>
 </body>
