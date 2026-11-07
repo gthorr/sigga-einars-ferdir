@@ -18,6 +18,7 @@ var STOPS = {
 
 function doPost(e) {
   var p = (e && e.parameter) || {};
+  if (p.action === 'mynd') return saveMynd(p);
   var nafn = String(p.nafn || 'Farþegi').trim().slice(0, 80);
   var netfang = String(p.netfang || '').trim().slice(0, 120);
   var stopp = String(p.stopp || 'Hvolsvöllur').trim().slice(0, 60);
@@ -50,8 +51,57 @@ function doPost(e) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-function doGet() {
+function doGet(e) {
+  var p = (e && e.parameter) || {};
+  if (p.action === 'myndir') {
+    return ContentService.createTextOutput(JSON.stringify({ myndir: listMyndir() })).setMimeType(ContentService.MimeType.JSON);
+  }
   return ContentService.createTextOutput('Sigga Einars ferðir – bókunarþjónn er í gangi. Það skýrist.');
+}
+
+// ---------------------------------------------------------------------------
+// Myndir úr rútunni: vistaðar í Drive-möppu, skráðar í flipann "Myndir".
+// ---------------------------------------------------------------------------
+var MYNDA_KODI = 'litli fugl';            // lykilorð = nafn hópsöngsins
+var MYNDA_MAPPA = 'Sigga Einars ferðir – Myndir úr rútunni';
+
+function myndaSheet() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sh = ss.getSheetByName('Myndir');
+  if (!sh) { sh = ss.insertSheet('Myndir'); sh.appendRow(['Tími', 'Drive id', 'Ljósmyndari', 'Texti']); }
+  return sh;
+}
+
+function saveMynd(p) {
+  var kodi = String(p.kodi || '').toLowerCase().replace(/\s+/g, ' ').trim();
+  if (kodi !== MYNDA_KODI) return json({ ok: false, villa: 'lykilord' });
+  var data = String(p.mynd || '');
+  if (!data || data.length > 8 * 1024 * 1024) return json({ ok: false, villa: 'mynd' });
+  var it = DriveApp.getFoldersByName(MYNDA_MAPPA);
+  var folder = it.hasNext() ? it.next() : DriveApp.createFolder(MYNDA_MAPPA);
+  var now = new Date();
+  var blob = Utilities.newBlob(Utilities.base64Decode(data), 'image/jpeg', 'rutan-' + now.getTime() + '.jpg');
+  var file = folder.createFile(blob);
+  file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+  myndaSheet().appendRow([now, file.getId(), String(p.nafn || '').slice(0, 40), String(p.texti || '').slice(0, 120)]);
+  return json({ ok: true });
+}
+
+function listMyndir() {
+  var rows = myndaSheet().getDataRange().getValues();
+  var out = [];
+  for (var i = 1; i < rows.length; i++) {
+    var d = rows[i][0] instanceof Date ? rows[i][0] : new Date(rows[i][0]);
+    out.push({
+      id: String(rows[i][1]), n: String(rows[i][2] || ''), x: String(rows[i][3] || ''),
+      ts: d.toISOString(), t: Utilities.formatDate(d, 'Atlantic/Reykjavik', 'HH:mm')
+    });
+  }
+  return out;
+}
+
+function json(o) {
+  return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);
 }
 
 function ticketHtml(midi, nafn, stopp, saeti, stada) {

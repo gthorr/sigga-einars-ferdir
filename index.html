@@ -82,6 +82,35 @@ h2{font-size:1.1rem;font-weight:900;letter-spacing:.06em;text-transform:uppercas
 @keyframes slide{to{transform:none;opacity:1}}
 .ticket .acts{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .ticket .acts .btn{text-decoration:none}
+#beint{padding-block:40px}
+.live-dot{display:inline-flex;align-items:center;gap:8px;background:#c8372d;color:#fff;font-size:.75rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+.live-dot::before{content:"";width:9px;height:9px;border-radius:50%;background:#fff;animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.live-dot::before,.tick-track{animation:none!important}}
+.live-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin-top:20px}
+.live-card{background:var(--white);border:2px solid var(--line);border-radius:18px;padding:22px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.live-card.now{border-color:var(--gold)}
+.live-card h3{margin:0;font-size:.78rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.live-big{font-size:1.6rem;font-weight:900;line-height:1.1}
+.live-sm{color:var(--muted);font-weight:700;font-size:.95rem}
+.fugl{display:flex;align-items:baseline;gap:10px}
+.fugl b{font-size:3rem;font-weight:900;line-height:1;color:var(--green)}
+.pax{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.pax li{display:flex;justify-content:space-between;gap:10px;font-weight:800;font-size:.95rem;border-bottom:1px solid var(--line);padding-bottom:6px}
+.pax li span:last-child{font-weight:900;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.pax .ok{color:var(--green-2)} .pax .wait{color:var(--muted)} .pax .bad{color:#c8372d}
+.ticker{margin-top:18px;background:var(--green);color:var(--white);border-radius:14px;overflow:hidden;display:flex;align-items:stretch}
+.ticker .lbl{background:var(--gold);color:var(--green);font-weight:900;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;padding:12px 14px;display:flex;align-items:center;flex:none}
+.tick-wrap{overflow:hidden;flex:1;min-width:0;display:flex;align-items:center}
+.tick-track{display:inline-block;white-space:nowrap;padding-left:100%;animation:tick 40s linear infinite;font-weight:800}
+@keyframes tick{to{transform:translateX(-100%)}}
+.feed{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.feed li{display:flex;gap:14px;font-weight:700}
+.feed time{font-weight:900;color:var(--gold);flex:none;min-width:3.2em;font-variant-numeric:tabular-nums}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:12px;margin-top:14px}
+.gallery figure{margin:0;background:var(--white);border-radius:14px;overflow:hidden;border:2px solid var(--line)}
+.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.gallery figcaption{padding:8px 12px;font-size:.85rem;font-weight:700;color:var(--muted)}
 .song .n{width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--green);font-weight:900;display:grid;place-items:center;font-size:1.2rem}
 .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:28px}
 .rev{background:var(--white);border:2px solid var(--line);border-radius:16px;padding:20px 22px;display:grid;gap:10px}
@@ -127,7 +156,7 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
 .cd .n{font-size:clamp(1.8rem,6vw,3rem);font-weight:900;color:var(--gold);font-variant-numeric:tabular-nums;line-height:1}
 .cd .u{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pale);margin-top:6px}
 .tease-note{color:var(--pale);font-weight:700;min-height:1.4em;text-align:center}
-#leid2[data-stage="1"] .stage2,#leid2[data-stage="1"] .stage3,#leid2[data-stage="1"] .stage4{display:none}
+#leid2[data-stage="2"] .stage2,#leid2[data-stage="1"] .stage3,#leid2[data-stage="1"] .stage4{display:none}
 #leid2[data-stage="2"] .stage3,#leid2[data-stage="2"] .stage4{display:none}
 #leid2[data-stage="3"] .stage4{display:none}
 </style>
@@ -140,6 +169,7 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
     <nav aria-label="Aðalvalmynd">
       <span class="brand">Sigga Einars ferðir</span>
       <ul>
+        <li><a href="#beint">Í beinni</a></li>
         <li><a href="#leid">Leiðin</a></li>
         <li><a href="#boka">Bóka</a></li>
         <li><a href="#songbok">Söngbók</a></li>
@@ -176,6 +206,59 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
 </header>
 
 <main>
+<section id="beint">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <span class="live-dot">Í beinni</span>
+      <h2 style="margin:0">Staða rútunnar</h2>
+    </div>
+    <p class="sub" id="lvUpd">Sæki nýjustu stöðu…</p>
+
+    <div class="ticker" aria-label="Fréttir úr rútunni">
+      <span class="lbl">Fréttir</span>
+      <div class="tick-wrap"><span class="tick-track" id="lvTick">Það skýrist.</span></div>
+    </div>
+
+    <div class="live-grid">
+      <div class="live-card now">
+        <h3>Rútan er núna</h3>
+        <div class="live-big" id="lvStada">Það skýrist</div>
+        <div class="live-sm" id="lvNanar"></div>
+        <h3 style="margin-top:8px">Næsti viðkomustaður</h3>
+        <div class="live-big" id="lvNaesti" style="font-size:1.3rem">Húsafell</div>
+        <div class="live-sm" id="lvNaestiT">Það skýrist</div>
+      </div>
+      <div class="live-card">
+        <h3>Farþegar um borð</h3>
+        <ul class="pax" id="lvPax"></ul>
+      </div>
+      <div class="live-card">
+        <h3>Litli fugl sunginn</h3>
+        <div class="fugl"><b id="lvFugl">0</b><span class="live-sm">sinnum</span></div>
+        <h3 style="margin-top:8px">Fréttir úr rútunni</h3>
+        <ul class="feed" id="lvFeed"></ul>
+      </div>
+    </div>
+
+    <div id="lvGalWrap" hidden>
+      <h2 style="margin-top:32px">Myndir úr rútunni</h2>
+      <div class="gallery" id="lvGal"></div>
+    </div>
+    <form class="counter" id="upForm" style="margin-top:28px" hidden>
+      <h3 style="margin:0;font-size:.78rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Senda mynd úr rútunni</h3>
+      <div class="row">
+        <div class="field"><label for="upFile">Mynd</label><input id="upFile" type="file" accept="image/*" required></div>
+        <div class="field"><label for="upNafn">Ljósmyndari</label><input id="upNafn" type="text" maxlength="40" placeholder="Hver tók hana?"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="upTexti">Myndatexti</label><input id="upTexti" type="text" maxlength="120" placeholder="Hvað er að gerast?"></div>
+        <div class="field"><label for="upKodi">Lykilorð (nafn hópsöngsins)</label><input id="upKodi" type="text" autocomplete="off" required></div>
+      </div>
+      <div class="row"><button class="btn" type="submit" id="upBtn">Senda mynd</button><span class="live-sm" id="upMsg" style="flex:1;min-width:0"></span></div>
+    </form>
+  </div>
+</section>
+
 <section id="leid">
   <div class="wrap">
     <h2>Ferðatilhögun</h2>
@@ -446,6 +529,53 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
       img.src='midar/'+id+'.png'; img.alt='Farmiði '+id; dl.href='midar/'+id+'.png'; dl.download='farmidi-'+id+'.png';
       img.style.animation='none'; void img.offsetWidth; img.style.animation='';
       out.hidden=false;
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var LBL={ok:['Um borð','ok'],'?':['Bíður','wait'],olis:['Gleymdist á Olís','bad'],judas:['Eigin bíll · Júdas','bad'],gleymdist:['Gleymdist','bad'],matur:['Matarbíllinn','ok'],kerra:['Í kerrunni','bad']};
+  function el(id){return document.getElementById(id);}
+  function txt(t,c){var x=document.createElement(t);if(c!=null)x.textContent=c;return x;}
+  function ago(iso){var d=new Date(iso);if(isNaN(d))return '';var m=Math.round((Date.now()-d)/60000);
+    var hh=('0'+d.getUTCHours()).slice(-2)+':'+('0'+d.getUTCMinutes()).slice(-2);
+    var dd=new Date(); var day=(d.toISOString().slice(0,10)===dd.toISOString().slice(0,10))?'':(m<2880?'í gær ':d.getUTCDate()+'. '+['jan','feb','mar','apr','maí','jún','júl','ágú','sep','okt','nóv','des'][d.getUTCMonth()]+' ');
+    return 'Síðast uppfært '+day+'kl. '+hh+(m>=1&&m<600?' ('+m+' mín. síðan)':'')+'. Síðan uppfærist sjálf.';}
+  function render(D){
+    el('lvUpd').textContent=ago(D.uppfaert);
+    el('lvStada').textContent=D.stada||'Það skýrist';
+    el('lvNanar').textContent=D.stada_nanar||'';
+    el('lvNaesti').textContent=D.naesti||'Húsafell';
+    el('lvNaestiT').textContent=D.naesti_timi||'Það skýrist';
+    el('lvFugl').textContent=D.litli_fugl!=null?D.litli_fugl:'?';
+    var ul=el('lvPax');ul.textContent='';
+    (D.farthegar||[]).forEach(function(p){var li=txt('li');var a=txt('span',p.nafn+' · '+p.stopp);var l=LBL[p.s]||[p.s,'wait'];var b=txt('span',l[0]);b.className=l[1];li.appendChild(a);li.appendChild(b);ul.appendChild(li);});
+    var fr=(D.frettir||[]).slice().reverse();
+    var fd=el('lvFeed');fd.textContent='';
+    fr.slice(0,6).forEach(function(f){var li=txt('li');li.appendChild(txt('time',f.t));li.appendChild(txt('span',f.x));fd.appendChild(li);});
+    el('lvTick').textContent=fr.map(function(f){return f.t+'  '+f.x;}).join('     ✦     ')||'Það skýrist.';
+    var g=el('lvGal');g.textContent='';
+    var all=(D.myndir||[]).map(function(m){return {src:'myndir/'+m.f,t:m.t,x:m.x,ts:m.ts||''};}).concat(DRIVE.map(function(m){return {src:'https://drive.google.com/thumbnail?id='+encodeURIComponent(m.id)+'&sz=w1200',t:m.t,x:(m.x||'')+(m.n?' · '+m.n:''),ts:m.ts||''};}));
+    all.sort(function(a,b){return a.ts<b.ts?-1:1;});
+    D.myndir=all;
+    all.slice().reverse().forEach(function(m){var f=txt('figure');var i=document.createElement('img');i.src=m.src;i.alt=m.x||'Mynd úr rútunni';i.loading='lazy';f.appendChild(i);if(m.x)f.appendChild(txt('figcaption',(m.t?m.t+' · ':'')+m.x));g.appendChild(f);});
+    el('lvGalWrap').hidden=!(D.myndir&&D.myndir.length);
+  }
+  var DRIVE=[];
+  function loadDrive(){ if(typeof SCRIPT_URL==='undefined')return; fetch(SCRIPT_URL+'?action=myndir&'+Date.now()).then(function(r){return r.json();}).then(function(j){DRIVE=(j&&j.myndir)||[];load();}).catch(function(){}); }
+  function load(){fetch('live.json?'+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(render).catch(function(){el('lvUpd').textContent='Samband við rútuna rofnaði. Það skýrist.';});}
+  load(); loadDrive(); setInterval(function(){load();loadDrive();},60000);
+  var uf=el('upForm'),um=el('upMsg'),ub=el('upBtn');
+  function shrink(file,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,1600/Math.max(im.width,im.height));var c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',.82));};im.onerror=function(){cb(null);};im.src=r.result;};r.readAsDataURL(file);}
+  uf.addEventListener('submit',function(e){e.preventDefault();var f=el('upFile').files[0];if(!f)return;
+    if(typeof SCRIPT_URL==='undefined'){um.textContent='Póstþjónn ekki tengdur.';return;}
+    ub.disabled=true;um.textContent='Minnka mynd… flytja í kerruna…';
+    shrink(f,function(data){ if(!data){ub.disabled=false;um.textContent='Gat ekki lesið myndina.';return;}
+      var b=new URLSearchParams();b.set('action','mynd');b.set('kodi',el('upKodi').value);b.set('nafn',el('upNafn').value);b.set('texti',el('upTexti').value);b.set('mynd',data.split(',')[1]);
+      fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:b}).then(function(){um.textContent='Mynd móttekin. Birtist eftir smá. Það skýrist.';uf.reset();setTimeout(loadDrive,4000);setTimeout(loadDrive,12000);})
+      .catch(function(){um.textContent='Sending mistókst. Reyndu aftur.';}).then(function(){ub.disabled=false;});
     });
   });
 })();

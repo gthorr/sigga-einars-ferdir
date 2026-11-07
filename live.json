@@ -1,0 +1,84 @@
+{
+  "uppfaert": "2026-11-06T17:11:00Z",
+  "stada": "Öll stopp að baki",
+  "stada_nanar": "Á leið í Húsafell. Matarbíllinn fylgir á eftir með Gissur og Óskar.",
+  "naesti": "Húsafell",
+  "naesti_timi": "Það skýrist",
+  "litli_fugl": 0,
+  "farthegar": [
+    {
+      "nafn": "Ívar",
+      "stopp": "Hvolsvöllur",
+      "s": "ok"
+    },
+    {
+      "nafn": "Heiðar",
+      "stopp": "Hvolsvöllur",
+      "s": "ok"
+    },
+    {
+      "nafn": "Elvar",
+      "stopp": "Hvolsvöllur",
+      "s": "ok"
+    },
+    {
+      "nafn": "Árni Þór",
+      "stopp": "Selfoss",
+      "s": "ok"
+    },
+    {
+      "nafn": "Gunnar Bjarki",
+      "stopp": "Selfoss",
+      "s": "ok"
+    },
+    {
+      "nafn": "Sigurður Einar",
+      "stopp": "Hveragerði",
+      "s": "ok"
+    },
+    {
+      "nafn": "Ævar Örn",
+      "stopp": "Reykjavík",
+      "s": "gleymdist"
+    },
+    {
+      "nafn": "Óskar",
+      "stopp": "Reykjavík",
+      "s": "matur"
+    },
+    {
+      "nafn": "Árni Rafn",
+      "stopp": "Reykjavík",
+      "s": "ok"
+    },
+    {
+      "nafn": "Gissur",
+      "stopp": "Reykjavík",
+      "s": "matur"
+    },
+    {
+      "nafn": "Sveinn Kristján",
+      "stopp": "Eigin bíll",
+      "s": "judas"
+    }
+  ],
+  "frettir": [
+    {
+      "t": "17:06",
+      "x": "Sigga Einars ferðir: rútan er lögð af stað. Bein útsending hafin."
+    },
+    {
+      "t": "17:11",
+      "x": "Öll viðkomustopp afgreidd. Ævar Örn gleymdist. Rannsókn hafin."
+    },
+    {
+      "t": "17:11",
+      "x": "Sveinn Kristján mætti ekki í rútuna. Eins og spáð var. Júdas."
+    },
+    {
+      "t": "17:11",
+      "x": "Gissur og Óskar í sérstökum matarbíl. Fararstjórn samþykkti ekki en það skýrist."
+    }
+  ],
+  "myndir": []
+}
