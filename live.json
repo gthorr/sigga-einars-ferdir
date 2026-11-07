@@ -1,5 +1,5 @@
 {
-  "uppfaert": "2026-11-07T12:46:00Z",
+  "uppfaert": "2026-11-07T12:47:00Z",
   "stada": "Öll stopp að baki",
   "stada_nanar": "Á leið í Húsafell. Matarbíllinn fylgir á eftir með Gissur og Óskar.",
   "naesti": "Húsafell",
@@ -39,7 +39,7 @@
     {
       "nafn": "Ævar Örn",
       "stopp": "Reykjavík",
-      "s": "gleymdist"
+      "s": "leid"
     },
     {
       "nafn": "Óskar",
@@ -82,6 +82,10 @@
     {
       "t": "12:46",
       "x": "Óskar Þormarsson er farinn heim. Miðinn ekki endurgreiddur."
+    },
+    {
+      "t": "12:47",
+      "x": "Ævar Örn fannst. Er að leggja af stað. Sólarhring of seint. Það skýrist."
     }
   ],
   "myndir": [

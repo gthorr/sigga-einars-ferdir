@@ -536,7 +536,7 @@ footer .fine{color:var(--pale);font-size:.9rem;font-weight:600}
 
 <script>
 (function(){
-  var LBL={ok:['Um borð','ok'],'?':['Bíður','wait'],olis:['Gleymdist á Olís','bad'],judas:['Eigin bíll · Júdas','bad'],gleymdist:['Gleymdist','bad'],matur:['Matarbíllinn','ok'],heim:['Farinn heim','bad'],kerra:['Í kerrunni','bad']};
+  var LBL={ok:['Um borð','ok'],'?':['Bíður','wait'],olis:['Gleymdist á Olís','bad'],judas:['Eigin bíll · Júdas','bad'],gleymdist:['Gleymdist','bad'],matur:['Matarbíllinn','ok'],heim:['Farinn heim','bad'],leid:['Á leiðinni','wait'],kerra:['Í kerrunni','bad']};
   function el(id){return document.getElementById(id);}
   function txt(t,c){var x=document.createElement(t);if(c!=null)x.textContent=c;return x;}
   function ago(iso){var d=new Date(iso);if(isNaN(d))return '';var m=Math.round((Date.now()-d)/60000);
